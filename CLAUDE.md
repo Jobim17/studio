@@ -17,11 +17,9 @@ Na primeira resposta da sessão, antes de qualquer outra coisa (a menos que a pe
    - Nível 1 → [guias/2-nivel-1-remotion.md](guias/2-nivel-1-remotion.md) e [guias/5-direcao-editorial.md](guias/5-direcao-editorial.md).
    - Nível 2 → [guias/4-nivel-2-higgsfield.md](guias/4-nivel-2-higgsfield.md) e [guias/5-direcao-editorial.md](guias/5-direcao-editorial.md). No caminho B (API key), leia também o guia do Nível 1, porque a montagem é no Remotion.
 
-3. **Confira os pré-requisitos em silêncio** e só fale do que estiver faltando, com o passo exato para resolver (os passos estão em [guias/1-primeiros-passos.md](guias/1-primeiros-passos.md)):
-   - `node_modules/` existe (senão: `npm install`);
-   - `python -c "import faster_whisper"` funciona (senão: `pip install faster-whisper`);
-   - `ffmpeg` e `ffprobe` respondem;
-   - skills `watch` e `remotion-best-practices` disponíveis;
+3. **Confira os pré-requisitos em silêncio** e resolva o que faltar:
+   - `node_modules/` existe, `python -c "import faster_whisper"` funciona e as skills `watch` e `remotion-best-practices` estão disponíveis. Se qualquer um faltar, **instale você mesmo** rodando `npm run instalar` (instala tudo isso de uma vez) e avise que as skills novas só aparecem numa **sessão nova**: peça para a pessoa reabrir o Claude nesta pasta;
+   - `ffmpeg`, `ffprobe`, `node` e `python` respondem. Se faltarem, instale com `winget` (Windows) ou `brew` (Mac), conforme [guias/1-primeiros-passos.md](guias/1-primeiros-passos.md);
    - Nível 2: as ferramentas da Higgsfield respondem (chame `balance`). Se não houver conector, explique os dois caminhos de conexão do guia (A: entrar com a conta, recomendado; B: API key da Higgsfield Cloud via `tools/hf_api.py`, sem Higgsedit). No caminho B, confirme que a variável `HF_KEY` (ou `HF_API_KEY` + `HF_API_SECRET`) existe, **sem imprimir o valor**.
 
 4. Liste os projetos em `projetos/` e pergunte qual editar. Se não houver nenhum, ensine a criar: `projetos/001. nome/video/` com o vídeo e `prints/` com as imagens.

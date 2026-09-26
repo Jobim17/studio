@@ -28,21 +28,37 @@ você grava e corta → salva o vídeo e os prints em projetos/
    → o vídeo final sai em edicoes/
 ```
 
-## Começo rápido
+## Instalar
 
-Precisa de: Claude com Claude Code (Desktop, VS Code ou terminal), Node.js, Python 3.10+ e FFmpeg. O passo a passo completo, com os comandos de instalação para Windows e Mac, está em **[guias/1-primeiros-passos.md](guias/1-primeiros-passos.md)**.
+O jeito mais fácil: abra uma sessão **Code** no Claude e cole:
 
-```bash
-git clone https://github.com/mackswendhell/studio.git
-cd studio
-npm install
-pip install faster-whisper
-npx skills add remotion-dev/skills
+```text
+Instala o repositório https://github.com/mackswendhell/studio na pasta C:\dev (siga a seção "Instalação" do README).
 ```
 
-Instale também a skill [watch](https://github.com/bradautomates/claude-video) (no Claude Code: `/plugin marketplace add bradautomates/claude-video` e `/plugin install watch@claude-video`).
+O Claude clona o repositório e instala tudo, incluindo as skills gratuitas **remotion-best-practices** e **watch**. No fim, abra uma sessão nova dentro da pasta `studio`.
 
-Depois:
+Pré-requisitos no computador: Node.js, Python 3.10+ e FFmpeg. Se faltar algum, o passo a passo para Windows e Mac está em **[guias/1-primeiros-passos.md](guias/1-primeiros-passos.md)**.
+
+### Instalação (instruções para o agente)
+
+Se você é um agente de IA instalando este repositório, faça exatamente isto:
+
+1. Clone: `git clone https://github.com/mackswendhell/studio.git` na pasta indicada (padrão: `C:\dev` no Windows, `~/dev` no Mac/Linux; evite pastas do OneDrive/iCloud).
+2. Entre na pasta e rode **`npm run instalar`**. Ele instala, nesta ordem:
+   - dependências do Remotion (`npm install`);
+   - transcrição local (`pip install faster-whisper`);
+   - skill **remotion-best-practices** no projeto (`npx -y skills add remotion-dev/skills -s remotion-best-practices -a claude-code -y`);
+   - skill **watch** (`claude plugin marketplace add bradautomates/claude-video` e `claude plugin install watch@claude-video`).
+3. Se o comando `claude` não existir (usuário só com o Claude Desktop), a watch é oferecida automaticamente ao abrir a pasta, porque está declarada em `.claude/settings.json`. Oriente a pessoa a aceitar, ou a instalar em **Personalizar → Plugins → Adicionar marketplace** com `https://github.com/bradautomates/claude-video`.
+4. Se `node`, `python` ou `ffmpeg` faltarem, instale-os com o gerenciador do sistema (`winget` no Windows, `brew` no Mac; comandos em [guias/1-primeiros-passos.md](guias/1-primeiros-passos.md)) e rode `npm run instalar` de novo.
+5. Termine dizendo à pessoa para **abrir uma sessão nova do Claude dentro da pasta `studio`**. Skills instaladas só aparecem numa sessão nova, e é lá que o diretor de vídeo ([CLAUDE.md](CLAUDE.md)) assume.
+
+Já clonou manualmente? Basta rodar `npm run instalar` dentro da pasta.
+
+## Começo rápido
+
+Depois de instalar:
 
 1. Coloque seu vídeo em `projetos/001. meu-video/video/` e os prints em `projetos/001. meu-video/prints/`.
 2. Abra a pasta `studio` no Claude (sessão **Code**).

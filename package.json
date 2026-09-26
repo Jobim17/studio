@@ -4,6 +4,7 @@
   "private": true,
   "description": "Estúdio de edição de vídeo com Claude Code: Nível 1 (Remotion, gratuito) e Nível 2 (Higgsfield).",
   "scripts": {
+    "instalar": "node scripts/instalar.mjs",
     "studio": "remotion studio src/index.ts",
     "compositions": "remotion compositions src/index.ts",
     "typecheck": "tsc --noEmit && node scripts/check-split-layouts.mjs"

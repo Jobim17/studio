@@ -53,7 +53,19 @@ Instale o [Homebrew](https://brew.sh) e rode:
 brew install node python ffmpeg yt-dlp git
 ```
 
-## 3. Baixar o Studio
+## 3. Baixar o Studio e instalar tudo
+
+### Jeito fácil: peça ao Claude
+
+Abra uma sessão **Code** no Claude e cole:
+
+```text
+Instala o repositório https://github.com/mackswendhell/studio na pasta C:\dev (siga a seção "Instalação" do README).
+```
+
+Ele clona, instala as dependências e as duas skills gratuitas (**remotion-best-practices** e **watch**). Quando terminar, **abra uma sessão nova** do Claude dentro da pasta `studio`: skills novas só aparecem numa sessão nova.
+
+### Jeito manual
 
 Escolha uma pasta **fora** do OneDrive, iCloud ou Dropbox (a sincronização atrapalha o render). Por exemplo, `C:\dev` no Windows ou `~/dev` no Mac.
 
@@ -61,11 +73,12 @@ Escolha uma pasta **fora** do OneDrive, iCloud ou Dropbox (a sincronização atr
 cd C:\dev
 git clone https://github.com/mackswendhell/studio.git
 cd studio
-npm install
-pip install faster-whisper
+npm run instalar
 ```
 
-Sem Git? Baixe o ZIP pelo botão verde **Code → Download ZIP** no GitHub, descompacte e rode os dois últimos comandos dentro da pasta.
+O `npm run instalar` faz tudo de uma vez: dependências do Remotion, transcrição local (`faster-whisper`), skill `remotion-best-practices` (dentro do projeto) e skill `watch`. No fim ele mostra um resumo do que deu certo e do que falhou.
+
+Sem Git? Baixe o ZIP pelo botão verde **Code → Download ZIP** no GitHub, descompacte e rode `npm run instalar` dentro da pasta.
 
 Teste o Remotion:
 
@@ -75,29 +88,14 @@ npm run studio
 
 Abre uma página no navegador com os exemplos da galeria. Se você vê as composições em `Estilos` e consegue dar play, está tudo certo. Feche com `Ctrl+C` no terminal.
 
-## 4. Instalar as skills gratuitas
+## 4. Sobre as skills gratuitas
 
-Skills são pacotes de conhecimento que o Claude carrega quando precisa.
+Skills são pacotes de conhecimento que o Claude carrega quando precisa. O `npm run instalar` já instala as duas:
 
-### `watch` (assiste e transcreve vídeos)
+- **`watch`**: assiste vídeos, extrai quadros e transcreve ([bradautomates/claude-video](https://github.com/bradautomates/claude-video));
+- **`remotion-best-practices`**: boas práticas do Remotion ([remotion-dev/skills](https://github.com/remotion-dev/skills)).
 
-- **Claude Desktop:** **Personalizar → Plugins → Adicionar → Adicionar marketplace → Adicionar de um repositório**, cole `https://github.com/bradautomates/claude-video`, clique em **Sincronizar** e depois instale **Watch**.
-- **VS Code:** no painel do Claude Code digite `/plugins`, vá em **Marketplaces**, adicione `bradautomates/claude-video` e instale **watch**.
-- **Terminal:** dentro do Claude Code, digite:
-  ```text
-  /plugin marketplace add bradautomates/claude-video
-  /plugin install watch@claude-video
-  ```
-
-### `remotion-best-practices` (boas práticas do Remotion)
-
-No terminal, dentro da pasta do Studio:
-
-```bash
-npx skills add remotion-dev/skills
-```
-
-Depois de instalar as duas, **abra uma sessão nova** do Claude.
+Usa só o Claude Desktop, sem o comando `claude` no terminal? A `watch` está declarada no projeto (`.claude/settings.json`), então o Claude oferece instalá-la ao abrir a pasta: aceite. Se não aparecer, instale à mão em **Personalizar → Plugins → Adicionar → Adicionar marketplace → Adicionar de um repositório**, cole `https://github.com/bradautomates/claude-video`, clique em **Sincronizar** e instale **Watch**.
 
 ## 5. (Opcional) Chave gratuita da Groq
 
