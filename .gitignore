@@ -13,3 +13,4 @@ projetos/000. exemplo/**/*.mov
 .claude/skills/
 .claude/settings.local.json
 skills-lock.json
+out/
