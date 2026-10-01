@@ -5,6 +5,7 @@ import {TerminalTecnico} from './estilos/TerminalTecnico';
 import {VerticalDados} from './estilos/VerticalDados';
 import {VerticalLegendas} from './estilos/VerticalLegendas';
 import {VerticalPrint} from './estilos/VerticalPrint';
+import {DURACAO_QUADROS, FPS as FPS_JORNADA, JornadaGuru} from './videos/jornada-guru/JornadaGuru';
 
 const FPS = 30;
 const SEIS_SEGUNDOS = 6 * FPS;
@@ -21,5 +22,8 @@ export const RemotionRoot: React.FC = () => (
     </Folder>
 
     {/* Seus vídeos entram aqui: um <Folder name="001-slug"> por projeto, com o código em src/videos/<slug>/. */}
+    <Folder name="001-reels-teste">
+      <Composition id="JornadaGuru" component={JornadaGuru} width={1080} height={1920} fps={FPS_JORNADA} durationInFrames={DURACAO_QUADROS} />
+    </Folder>
   </>
 );
