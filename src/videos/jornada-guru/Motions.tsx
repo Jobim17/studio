@@ -57,7 +57,8 @@ const BarraMissao: React.FC<{s: number; e: number; enche: [number, number]; alvo
   const t = useT();
   const m = useMola(s);
   if (t < s || t > e) return null;
-  const fill = kf(t, [[s, 0], [s + 0.6, 25], [enche[0], 25], [enche[1], 100]]);
+  // Sem folga para a pausa em 25% (a barra já começa a encher logo que entra), enche direto de 0 a 100.
+  const fill = kf(t, enche[0] > s + 0.6 ? [[s, 0], [s + 0.6, 25], [enche[0], 25], [enche[1], 100]] : [[s, 0], [enche[1], 100]]);
   const alvoOn = interpolate(t, [alvo, alvo + 0.3], [0, 1], clamp);
   return (
     <div style={{position: 'absolute', left: 90, right: 90, top: 1030, opacity: janela(t, s, e), transform: `translateY(${(1 - m) * 30}px)`}}>
